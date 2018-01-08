@@ -94,7 +94,6 @@ import org.spongepowered.api.world.DimensionTypes;
 import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.World;
 import org.spongepowered.common.SpongeImpl;
-import org.spongepowered.common.interfaces.world.IMixinWorldServer;
 
 import java.io.File;
 import java.io.IOException;
@@ -913,7 +912,7 @@ public class GPClaim implements Claim {
             return value.asBoolean();
         }
 
-        return ((IMixinWorldServer) this.world).getActiveConfig().getConfig().getWorld().getPVPEnabled();
+        return this.world.getProperties().isPVPEnabled();
     }
 
     public void setPvpOverride(Tristate value) {
